@@ -4,7 +4,6 @@
       <component :is="Component" />
     </keep-alive>
   </router-view>
-
 </template>
 
 <script>
@@ -22,5 +21,4 @@ export default {
   width: 16px;
   height: 16px;
 }
-
 </style>

@@ -1,14 +1,9 @@
 <template>
-  <var-image-preview
-      closeable
-      :images="previewImageList"
-      v-model:show="showPreview"
-      @close="handleCloseEvent"
-  />
+  <var-image-preview closeable :images="previewImageList" v-model:show="showPreview" @close="handleCloseEvent" />
 </template>
 
 <script>
-import {useRoute} from "vue-router";
+import { useRoute } from "vue-router";
 
 export default {
   name: "PreviewImageList",
@@ -37,6 +32,4 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

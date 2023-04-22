@@ -1,4 +1,4 @@
-const formatTime =(timeStr)=>{
+const formatTime = (timeStr) => {
     let date = new Date(timeStr);
     let postTimeStamp = date.getTime();
     let currentTime = new Date().getTime();
@@ -23,4 +23,4 @@ const formatTime =(timeStr)=>{
     }
     return result
 }
-export default {formatTime}
+export default { formatTime }

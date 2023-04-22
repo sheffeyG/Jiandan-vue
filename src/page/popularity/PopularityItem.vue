@@ -15,11 +15,10 @@
   </div>
   <teleport to="body">
     <var-dialog v-model:show="showPopUp" @before-close="beforeClose">
-      <var-input type="text" :rules="[v => v.length > 0 || '请输入昵称']" placeholder="请输入昵称" v-model="commentName"/>
-      <var-input type="text"
-                 :rules="[v=>/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(v) || '邮箱格式不正确']"
-                 placeholder="请输入邮箱" v-model="commentEmail"/>
-      <var-input type="text" placeholder="请输入评论" v-model="commentContent" textarea/>
+      <var-input type="text" :rules="[v => v.length > 0 || '请输入昵称']" placeholder="请输入昵称" v-model="commentName" />
+      <var-input type="text" :rules="[v => /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(v) || '邮箱格式不正确']"
+        placeholder="请输入邮箱" v-model="commentEmail" />
+      <var-input type="text" placeholder="请输入评论" v-model="commentContent" textarea />
     </var-dialog>
   </teleport>
   <teleport to="body">
@@ -33,7 +32,7 @@
 
 
 import GirlsService from "../../service/girls";
-import {Snackbar} from "@varlet/ui";
+import { Snackbar } from "@varlet/ui";
 
 export default {
   name: "PopularityItem",
@@ -111,8 +110,8 @@ export default {
         this.showSnackbarWithContent(commentResult.msg)
       }
     },
-    beforeClose(action,done){
-      if(action==='confirm'){
+    beforeClose(action, done) {
+      if (action === 'confirm') {
         const data = {
           author: this.commentName,
           email: this.commentEmail,
@@ -155,7 +154,7 @@ export default {
 
         this.postComment(data)
       }
-      this.commentContent=''
+      this.commentContent = ''
       done()
 
     },
@@ -170,9 +169,7 @@ export default {
 </script>
 
 <style scoped>
-.safe-area {
-
-}
+.safe-area {}
 
 .var-elevation--3 {
   padding: 10px;

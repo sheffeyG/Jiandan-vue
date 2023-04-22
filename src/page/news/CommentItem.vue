@@ -1,9 +1,8 @@
 <template>
-
   <div class="top">
     <label class="author"> {{ commentItem.name }}</label>
-    <label class="OO">OO  {{ commentItem.vote_positive }}</label>
-    <label class="XX">XX  {{ commentItem.vote_negative }}</label>
+    <label class="OO">OO {{ commentItem.vote_positive }}</label>
+    <label class="XX">XX {{ commentItem.vote_negative }}</label>
   </div>
 
   <div class="time"> {{ timeStr }}</div>
@@ -35,9 +34,10 @@ export default {
 </script>
 
 <style scoped>
-.top{
+.top {
   display: flex;
 }
+
 .author {
   font-size: 14px;
   color: #444444;
@@ -72,5 +72,4 @@ export default {
   color: #444444;
   font-size: 16px;
 }
-
 </style>

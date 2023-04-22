@@ -1,17 +1,10 @@
 <template>
-
   <var-pull-refresh v-model="isRefresh" @refresh="refresh">
-    <var-list
-        loading-text="正在加载"
-        :finished-text="finishedText"
-        error-text="出错了"
-        :finished="hasMore"
-        :loading="loading"
-        @load="loadMore">
+    <var-list loading-text="正在加载" :finished-text="finishedText" error-text="出错了" :finished="hasMore" :loading="loading"
+      @load="loadMore">
       <BoringItem v-for="item in boringList" :key="item.id" :item="item"></BoringItem>
     </var-list>
   </var-pull-refresh>
-
 </template>
 
 <script>
@@ -21,7 +14,7 @@ import BoringService from '../../service/boring'
 
 export default {
   name: "Boring",
-  components: {BoringItem},
+  components: { BoringItem },
   data() {
     return {
       boringList: [],
@@ -29,7 +22,7 @@ export default {
       startID: 0,
       hasMore: true,
       isRefresh: false,
-      finishedText:""
+      finishedText: ""
     }
   },
   mounted() {
@@ -65,6 +58,4 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

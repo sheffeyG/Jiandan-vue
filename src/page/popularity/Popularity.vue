@@ -1,18 +1,12 @@
 <template>
   <var-pull-refresh v-model="isRefresh" @refresh="refresh">
-  <var-list
-      loading-text="正在加载"
-      :finished-text="finishedText"
-      error-text="出错了"
-      :finished="hasMore"
-      :loading="loading"
+    <var-list loading-text="正在加载" :finished-text="finishedText" error-text="出错了" :finished="hasMore" :loading="loading"
       @load="loadMore">
 
-      <PopularityItem v-for="item in popularityList" :key="item.id" :item="item" ></PopularityItem>
+      <PopularityItem v-for="item in popularityList" :key="item.id" :item="item"></PopularityItem>
 
-  </var-list>
+    </var-list>
   </var-pull-refresh>
-
 </template>
 
 <script>
@@ -21,15 +15,15 @@ import PopularityItem from "./PopularityItem";
 
 export default {
   name: "Popularity",
-  components: {PopularityItem},
+  components: { PopularityItem },
   data() {
     return {
       startID: 0,
       popularityList: [],
       loading: false,
       hasMore: true,
-      isRefresh:false,
-      finishedText:""
+      isRefresh: false,
+      finishedText: ""
     }
   },
   mounted() {
@@ -56,7 +50,7 @@ export default {
     loadMore() {
       this.loadPopularity(true)
     },
-    refresh(){
+    refresh() {
       this.loadPopularity(false)
     }
   }
@@ -64,6 +58,4 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

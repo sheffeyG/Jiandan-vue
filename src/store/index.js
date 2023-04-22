@@ -2,7 +2,7 @@ import { createStore, createLogger } from 'vuex'
 import root from "./root";
 const debug = process.env.NODE_ENV !== 'production'
 
-export  default createStore({
+export default createStore({
     modules: {
         root
     },

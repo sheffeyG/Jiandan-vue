@@ -1,11 +1,6 @@
 <template>
-  <var-tabs
-      sticky
-      elevation
-      color="#000000"
-      active-color="#fff"
-      v-model:active="active"
-      inactive-color="hsla(0, 0%, 100%, .6)">
+  <var-tabs sticky elevation color="#000000" active-color="#fff" v-model:active="active"
+    inactive-color="hsla(0, 0%, 100%, .6)">
 
     <var-tab>新鲜事</var-tab>
     <var-tab>树洞</var-tab>

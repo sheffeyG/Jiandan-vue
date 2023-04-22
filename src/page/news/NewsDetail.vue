@@ -2,7 +2,7 @@
   <div class="container">
 
 
-    <img class="top-img" :src="imgUrl" alt="顶部图片"/>
+    <img class="top-img" :src="imgUrl" alt="顶部图片" />
     <div class="title">{{ title }}</div>
     <div class="author-and-time">
       <label class="author">
@@ -14,27 +14,26 @@
 
     </div>
     <div class="excerpt">{{ excerpt }}</div>
-    <hr/>
+    <hr />
     <div class="detail" v-html="detail"></div>
     <div class="var-elevation--2 bottom-area">
-      <img :src="backIcon" @click="goBack" class="back" alt=""/>
-      <img :src="commentIcon" @click="gotoCommentList" class="comment-list" alt=""/>
-      <img :src="moreIcon" @click="showActionDialog" class="more-icon" alt=""/>
+      <img :src="backIcon" @click="goBack" class="back" alt="" />
+      <img :src="commentIcon" @click="gotoCommentList" class="comment-list" alt="" />
+      <img :src="moreIcon" @click="showActionDialog" class="more-icon" alt="" />
     </div>
     <var-popup position="bottom" v-model:show="showMoreActionPopup">
       <div class="block">
-        <var-cell icon="heart" title="收藏" @click="collect"/>
-        <var-cell icon="fire" title="分享" @click="share"/>
+        <var-cell icon="heart" title="收藏" @click="collect" />
+        <var-cell icon="fire" title="分享" @click="share" />
       </div>
     </var-popup>
   </div>
-
 </template>
 
 <script>
-import {useRoute} from "vue-router";
+import { useRoute } from "vue-router";
 import NewsService from '../../service/news'
-import {Snackbar} from "@varlet/ui";
+import { Snackbar } from "@varlet/ui";
 
 const backIcon = require('../../assets/images/back.svg')
 const moreIcon = require('../../assets/images/more.svg')
@@ -100,9 +99,9 @@ export default {
     },
     gotoCommentList() {
       this.$router.push({
-        name:'newsCommentList',
-        params:{
-          newsId:this.newsId
+        name: 'newsCommentList',
+        params: {
+          newsId: this.newsId
         }
       })
     }
@@ -111,7 +110,6 @@ export default {
 </script>
 
 <style scoped>
-
 hr {
   margin-left: 36px;
   margin-right: 36px;

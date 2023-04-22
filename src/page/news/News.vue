@@ -1,18 +1,11 @@
 <template>
   <var-pull-refresh v-model="isRefresh" @refresh="refresh">
-    <var-list
-        loading-text="正在加载"
-        :finished-text="finishedText"
-        error-text="出错了"
-        :finished="hasMore"
-        :error="error"
-        :loading="loading"
-        @load="loadMore">
-        <NewsItem v-for="(item,index) in news" :news="item" :key="index" :last-one="index===news.length-1" @click="toDetail(item)"></NewsItem>
+    <var-list loading-text="正在加载" :finished-text="finishedText" error-text="出错了" :finished="hasMore" :error="error"
+      :loading="loading" @load="loadMore">
+      <NewsItem v-for="(item, index) in news" :news="item" :key="index" :last-one="index === news.length - 1"
+        @click="toDetail(item)"></NewsItem>
     </var-list>
   </var-pull-refresh>
-
-
 </template>
 
 <script>
@@ -35,8 +28,8 @@ export default {
       loading: false,
       hasMore: true,
       isRefresh: false,
-      error:false,
-      finishedText:''
+      error: false,
+      finishedText: ''
     }
   },
   mounted() {
@@ -76,17 +69,17 @@ export default {
     refresh() {
       this.loadNewsList(false)
     },
-    toDetail(item){
+    toDetail(item) {
       console.log("详情")
       this.$router.push({
-        name:"newsDetail",
-        params:{
-          imgUrl:item.custom_fields.thumb_c[0],
-          excerpt:item.excerpt,
-          newsId:item.id,
-          title:item.title,
-          author:item.author.name,
-          time:TimeUtils.formatTime(item.date)
+        name: "newsDetail",
+        params: {
+          imgUrl: item.custom_fields.thumb_c[0],
+          excerpt: item.excerpt,
+          newsId: item.id,
+          title: item.title,
+          author: item.author.name,
+          time: TimeUtils.formatTime(item.date)
         }
       })
     }
@@ -96,7 +89,4 @@ export default {
 }
 </script>
 
-<style>
-
-
-</style>
+<style></style>

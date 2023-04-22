@@ -9,22 +9,21 @@
     <div class="content">
       {{ getContent }}
     </div>
-    <var-image class="girls-img" :src="item.images[0].url" :error=logo @click="showImagePreview" lazy/>
+    <var-image class="girls-img" :src="item.images[0].url" :error=logo @click="showImagePreview" lazy />
     <div class="footer-row">
       <div @click="votePositive">OO[{{ getVotePositive }}]</div>
       <div @click="voteNegative">XX[{{ getVoteNegative }}]</div>
       <div @click="showPopUp = true">吐槽[{{ getCommentCount }}]</div>
-      <div v-show="showMultiImageTag"  @click="showImagePreview">多图</div>
+      <div v-show="showMultiImageTag" @click="showImagePreview">多图</div>
       <div v-show="!showMultiImageTag"></div>
     </div>
   </div>
   <teleport to="body">
     <var-dialog v-model:show="showPopUp" @before-close="beforeClose">
-      <var-input type="text" :rules="[v => v.length > 0 || '请输入昵称']" placeholder="请输入昵称" v-model="commentName"/>
-      <var-input type="text"
-                 :rules="[v=>/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(v) || '邮箱格式不正确']"
-                 placeholder="请输入邮箱" v-model="commentEmail"/>
-      <var-input type="text" placeholder="请输入评论" v-model="commentContent" textarea/>
+      <var-input type="text" :rules="[v => v.length > 0 || '请输入昵称']" placeholder="请输入昵称" v-model="commentName" />
+      <var-input type="text" :rules="[v => /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(v) || '邮箱格式不正确']"
+        placeholder="请输入邮箱" v-model="commentEmail" />
+      <var-input type="text" placeholder="请输入评论" v-model="commentContent" textarea />
     </var-dialog>
   </teleport>
   <teleport to="body">
@@ -37,7 +36,7 @@
 <script>
 import logo from '../../assets/images/image_load_fail.svg'
 import GirlsService from "../../service/girls"
-import {Snackbar} from "@varlet/ui";
+import { Snackbar } from "@varlet/ui";
 import TimeUtil from '@/utils/time.js'
 
 
@@ -64,15 +63,15 @@ export default {
     getContent: function () {
       return this.item.content.replaceAll("#img#", "")
     },
-    getImages:function (){
+    getImages: function () {
       let images = [];
-      this.item.images.forEach(function(image){
+      this.item.images.forEach(function (image) {
         images.push(image.url)
       })
       return images
     },
-    showMultiImageTag:function (){
-      return this.item.images.length>1
+    showMultiImageTag: function () {
+      return this.item.images.length > 1
     },
     getVotePositive: function () {
       if (this.votePos) {
@@ -99,16 +98,16 @@ export default {
         return 0
       }
     },
-    getFormatTime:function (){
+    getFormatTime: function () {
       return TimeUtil.formatTime(this.item.date)
     }
   },
-  methods:{
-    showImagePreview(){
-      console.log("GirlsItem#showImagePreview",this.getImages);
+  methods: {
+    showImagePreview() {
+      console.log("GirlsItem#showImagePreview", this.getImages);
       // const router = useRouter()
       this.$router.push({
-        name:'previewImage',
+        name: 'previewImage',
         params: { imageList: this.getImages }
       })
     },
@@ -143,8 +142,8 @@ export default {
         this.showSnackbarWithContent(commentResult.msg)
       }
     },
-    beforeClose(action,done){
-      if(action==='confirm'){
+    beforeClose(action, done) {
+      if (action === 'confirm') {
         const data = {
           author: this.commentName,
           email: this.commentEmail,
@@ -187,7 +186,7 @@ export default {
 
         this.postComment(data)
       }
-      this.commentContent=''
+      this.commentContent = ''
       done()
 
     },
@@ -203,21 +202,24 @@ export default {
 </script>
 
 <style scoped>
-.time{
+.time {
   margin-top: 6px;
   font-size: 14px;
   color: #999999;
 }
-.author{
+
+.author {
   font-size: 18px;
   color: #333333;
 }
-.content{
+
+.content {
   margin-top: 6px;
   font-size: 16px;
   color: #444444;
 }
-.girls-img{
+
+.girls-img {
   margin-top: 6px;
 }
 

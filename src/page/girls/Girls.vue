@@ -1,16 +1,10 @@
 <template>
   <var-pull-refresh v-model="isRefresh" @refresh="refresh">
-    <var-list
-        loading-text="正在加载"
-        :finished-text="finishedText"
-        error-text="出错了"
-        :finished="hasMore"
-        :loading="loading"
-        @load="loadMore">
-        <GirlsItem v-for="item in girlsList" :key="item.id" :item="item"></GirlsItem>
+    <var-list loading-text="正在加载" :finished-text="finishedText" error-text="出错了" :finished="hasMore" :loading="loading"
+      @load="loadMore">
+      <GirlsItem v-for="item in girlsList" :key="item.id" :item="item"></GirlsItem>
     </var-list>
-</var-pull-refresh>
-
+  </var-pull-refresh>
 </template>
 
 <script>
@@ -29,10 +23,10 @@ export default {
       loading: false,
       startID: 0,
       hasMore: true,
-      isRefresh:false,
-      images:[],
-      closeShow:false,
-      finishedText:""
+      isRefresh: false,
+      images: [],
+      closeShow: false,
+      finishedText: ""
     }
   },
   mounted() {
@@ -53,7 +47,7 @@ export default {
         result = await GirlsService.getGirlsDefault()
         this.girlsList = result.data
       }
-      console.log("妹子图",this.girlsList)
+      console.log("妹子图", this.girlsList)
       this.finishedText = "到底了"
       this.loading = false
       this.isRefresh = false
@@ -63,7 +57,7 @@ export default {
     loadMore() {
       this.loadGirlsPic(true)
     },
-    refresh(){
+    refresh() {
       this.loadGirlsPic(false)
     },
   }
@@ -71,6 +65,4 @@ export default {
 }
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

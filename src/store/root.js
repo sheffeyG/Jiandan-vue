@@ -5,7 +5,7 @@ export default {
         previewImageList: [],
         showPreview: false
     },
-    mutations:{
+    mutations: {
 
     }
 }

@@ -1,5 +1,4 @@
 <template>
-
   <div class="safe-area">
     <div class="news">
       <div class="main">
@@ -18,17 +17,15 @@
         </div>
       </div>
       <div class="image">
-        <var-image class="news-img" :src="newsObject.custom_fields.thumb_c[0]" :error=logo lazy/>
+        <var-image class="news-img" :src="newsObject.custom_fields.thumb_c[0]" :error=logo lazy />
       </div>
     </div>
-  <div class="divider" v-show="!lastOne"></div>
+    <div class="divider" v-show="!lastOne"></div>
   </div>
-
-
 </template>
 
 <script>
-import {computed, reactive} from "vue";
+import { computed, reactive } from "vue";
 import logo from '../../assets/images/image_load_fail.svg'
 import TimeUtil from '@/utils/time.js'
 export default {
@@ -73,7 +70,8 @@ export default {
   width: 120px;
   height: 90px;
 }
-.news-img img{
+
+.news-img img {
   width: 120px;
   height: 90px;
 }
@@ -121,11 +119,11 @@ export default {
   min-width: 0;
   padding: 2px 0;
 }
-.divider{
+
+.divider {
   height: 1px;
   background: #999999;
   margin-top: 5px;
   margin-bottom: 5px;
 }
-
 </style>

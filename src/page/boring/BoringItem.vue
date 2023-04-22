@@ -1,5 +1,4 @@
 <template>
-
   <div class="var-elevation--3">
     <div class="author">
       {{ item.author }}
@@ -10,7 +9,7 @@
     <div class="content">
       {{ getContent }}
     </div>
-    <var-image class="boring-img" :src="item.images[0].url" :error=logo @click="showImagePreview" fit="contain" lazy/>
+    <var-image class="boring-img" :src="item.images[0].url" :error=logo @click="showImagePreview" fit="contain" lazy />
     <div class="footer-row">
       <div @click="votePositive">OO[{{ getVotePositive }}]</div>
       <div @click="voteNegative">XX[{{ getVoteNegative }}]</div>
@@ -23,11 +22,10 @@
   </div>
   <teleport to="body">
     <var-dialog v-model:show="showPopUp" @before-close="beforeClose">
-      <var-input type="text" :rules="[v => v.length > 0 || '请输入昵称']" placeholder="请输入昵称" v-model="commentName"/>
-      <var-input type="text"
-                 :rules="[v=>/^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(v) || '邮箱格式不正确']"
-                 placeholder="请输入邮箱" v-model="commentEmail"/>
-      <var-input type="text" placeholder="请输入评论" v-model="commentContent" textarea/>
+      <var-input type="text" :rules="[v => v.length > 0 || '请输入昵称']" placeholder="请输入昵称" v-model="commentName" />
+      <var-input type="text" :rules="[v => /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/.test(v) || '邮箱格式不正确']"
+        placeholder="请输入邮箱" v-model="commentEmail" />
+      <var-input type="text" placeholder="请输入评论" v-model="commentContent" textarea />
     </var-dialog>
   </teleport>
   <teleport to="body">
@@ -40,7 +38,7 @@
 <script>
 import logo from '../../assets/images/image_load_fail.svg'
 import BoringService from '../../service/boring'
-import {Snackbar} from "@varlet/ui";
+import { Snackbar } from "@varlet/ui";
 import TimeUtil from '@/utils/time.js'
 
 export default {
@@ -65,7 +63,7 @@ export default {
   },
   computed: {
 
-    getFormatTime:function (){
+    getFormatTime: function () {
       return TimeUtil.formatTime(this.item.date)
     },
 
@@ -114,7 +112,7 @@ export default {
     showImagePreview() {
       this.$router.push({
         name: 'previewImage',
-        params: {imageList: this.getImages}
+        params: { imageList: this.getImages }
       })
     },
     async votePositive() {
@@ -148,8 +146,8 @@ export default {
         this.showSnackbarWithContent(commentResult.msg)
       }
     },
-    beforeClose(action,done){
-      if(action==='confirm'){
+    beforeClose(action, done) {
+      if (action === 'confirm') {
         const data = {
           author: this.commentName,
           email: this.commentEmail,
@@ -192,7 +190,7 @@ export default {
 
         this.postComment(data)
       }
-      this.commentContent=''
+      this.commentContent = ''
       done()
 
     },
@@ -213,21 +211,25 @@ export default {
   padding: 10px;
   margin: 6px;
 }
-.time{
+
+.time {
   margin-top: 6px;
   font-size: 14px;
   color: #999999;
 }
-.author{
+
+.author {
   font-size: 18px;
   color: #333333;
 }
-.content{
+
+.content {
   margin-top: 6px;
   font-size: 16px;
   color: #444444;
 }
-.boring-img{
+
+.boring-img {
   margin-top: 6px;
 }
 

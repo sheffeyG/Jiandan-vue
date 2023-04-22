@@ -10,7 +10,7 @@ const service = axios.create({
 service.interceptors.request.use(config => {
     const { method } = config;
 
-    if (method.toUpperCase() === 'POST' ) {
+    if (method.toUpperCase() === 'POST') {
         config.data = qs.stringify(config.data);
     }
     return config;
